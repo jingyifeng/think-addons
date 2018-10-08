@@ -1,12 +1,7 @@
 {
     "name": "jingyifeng/think-addons",
-    "description": "The ThinkPHP5 Addons Package",
-    "type": "project",
-    "license":"Apache-2.0",
-    "require": {
-        "topthink/think-helper": ">=1.0.4",
-        "topthink/think-installer": ">=1.0.10"
-    },
+    "description": "The ThinkPHP5.0 Addons Package",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "yifeng",
@@ -14,17 +9,15 @@
         }
     ],
     "minimum-stability": "dev",
+    "require": {
+        
+    },
     "autoload": {
         "psr-4": {
             "think\\": "src/"
         },
         "files": [
-            "src/common.php"
+            "src/helper.php"
         ]
-    },
-    "extra": {
-        "think-config": {
-             "addons": "src/config.php"
-        }
     }
 }
