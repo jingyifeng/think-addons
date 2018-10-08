@@ -3,8 +3,8 @@
     "description": "The ThinkPHP5 Addons Package",
     "type": "project",
     "require": {
-        "topthink/think-installer": "1.*",
-        "topthink/think-helper": "1.*"
+        "topthink/think-helper": ">=1.0.4",
+        "topthink/think-installer": ">=1.0.10"
     },
     "license": "MIT",
     "authors": [
@@ -13,5 +13,18 @@
             "email": "576617109@qq.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "think\\": "src/"
+        },
+        "files": [
+            "src/common.php"
+        ]
+    },
+    "extra": {
+        "think-config": {
+             "addons": "src/config.php"
+        }
+    }
 }
