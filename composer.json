@@ -1,5 +1,5 @@
 {
-    "name": "yifeng/think-addons",
+    "name": "jingyifeng/think-addons",
     "description": "The ThinkPHP5 Addons Package",
     "type": "project",
     "require": {
