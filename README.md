@@ -4,7 +4,7 @@ The ThinkPHP5 Addons Package
 >扩展了一些功能函数
 
 ## 安装
-
+composer require yifeng/think-addons
 
 ## 配置
 ### 公共配置
