@@ -2,6 +2,7 @@
     "name": "jingyifeng/think-addons",
     "description": "The ThinkPHP5 Addons Package",
     "type": "project",
+    "LICENSE":"Apache-2.0",
     "require": {
         "topthink/think-helper": ">=1.0.4",
         "topthink/think-installer": ">=1.0.10"
