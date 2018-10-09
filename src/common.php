@@ -1,12 +1,12 @@
 <?php
 // +----------------------------------------------------------------------
-// | thinkphp5 Addons [ WE CAN DO IT JUST THINK IT ]
+// | thinkphp5 Addons [FORM 5ini99/think-addons]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 http://www.zzstudio.net All rights reserved.
+// | Copyright (c) 2018 http://www.yfketang.cn All rights reserved.
 // +----------------------------------------------------------------------
 // | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
 // +----------------------------------------------------------------------
-// | Author: Byron Sampson <xiaobo.sun@qq.com>
+// | Author: yifeng <576617109@qq.com>
 // +----------------------------------------------------------------------
 
 use think\App;
@@ -53,6 +53,7 @@ Hook::add('app_init', function () {
             $info = pathinfo($addons_file);
             // 获取插件目录名
             $name = pathinfo($info['dirname'], PATHINFO_FILENAME);
+            //判断插件是否安装，只有安装的插件才有效
             if(!is_file(ADDON_PATH.$name.DS."config.php")){
                 continue;
             }
@@ -158,16 +159,23 @@ function get_addon_list()
 
         if (!is_file($addonDir . ucfirst($name) . '.php'))
             continue;
-
-        //这里不采用get_addon_info是因为会有缓存
-        //$info = get_addon_info($name);
-        $info_file = $addonDir . 'info.ini';
-        if (!is_file($info_file))
+        $class = get_addon_class($name);
+        if (!class_exists($class)) {
             continue;
-
-        $info = Config::parse($info_file, '', "addon-info-{$name}");
-        $info['url'] = addon_url($name);
-        $list[$name] = $info;
+        }
+        $addon = new $class();
+        //判断是否是有效插件（插件基本信息）
+        if(!$addon->checkInfo()){
+            continue;
+        }
+        $info=$addon->info;
+        $info_file = $addonDir . 'config.php';
+        if (!is_file($info_file)){
+            $info['status']=0;
+        }else{
+            $info['status']=1;
+        }
+        $list[] = $info;
     }
     return $list;
 }
