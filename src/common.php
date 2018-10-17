@@ -131,7 +131,7 @@ function create_config($config,$name="config.php"){
     $config=var_export($config, true);
     $content =<<<EOT
     <?php
-    return {$config}
+    return {$config};
 EOT;
     $result=file_put_contents($config_file,$content);
     if($result===false){
